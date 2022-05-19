@@ -150,7 +150,7 @@ export class InputState {
 
   ignoreDuringComposition(event: Event): boolean {
     if (!/^key/.test(event.type)) return false
-    if (this.composing > 0) return true
+    if (this.composing > 0 && !event.synthetic) return true
     // See https://www.stum.de/2016/06/24/handling-ime-events-in-javascript/.
     // On some input method editors (IMEs), the Enter key is used to
     // confirm character selection. On Safari, when Enter is pressed,
